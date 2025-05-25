@@ -1,54 +1,78 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Менеджер | Astana IT</title>
+    <title>AI Manager | Astana IT</title>
+
+    <!-- Icons & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
     <style>
         :root{
             --primary:#2563eb;
             --primary-hover:#1d4ed8;
             --dark:#1e293b;
             --light:#f8fafc;
-            --gradient:linear-gradient(135deg,var(--primary),#3b82f6)
+            --gradient:linear-gradient(135deg,var(--primary),#3b82f6);
         }
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;scroll-behavior:smooth}
         body{background:var(--light);color:var(--dark);line-height:1.6}
+
         /* Header */
-        .header{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,.05);position:fixed;width:100%;top:0;z-index:1000;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center}
-        .logo{font-size:1.8rem;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .cta-button{background:var(--gradient);color:#fff;padding:.8rem 2rem;border-radius:50px;text-decoration:none;font-weight:600;transition:.3s;box-shadow:0 4px 15px rgba(37,99,235,.2)}
+        .header{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);
+                box-shadow:0 4px 20px rgba(0,0,0,.05);position:fixed;width:100%;top:0;z-index:1000;
+                padding:1rem 5%;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.8rem;font-weight:700;background:var(--gradient);
+              -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .cta-button{background:var(--gradient);color:#fff;padding:.8rem 2rem;border-radius:50px;
+                    text-decoration:none;font-weight:600;transition:.3s;box-shadow:0 4px 15px rgba(37,99,235,.2)}
         .cta-button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.3)}
+
         /* Hero */
-        .hero{min-height:100vh;background:var(--gradient);color:#fff;display:flex;align-items:center;padding:120px 5% 80px;position:relative}
-        .hero::after{content:'';position:absolute;bottom:-10px;left:0;width:100%;height:100px;background:var(--light);clip-path:polygon(0 0,100% 0,100% 20%,0 100%)}
+        .hero{min-height:100vh;background:var(--gradient);color:#fff;display:flex;align-items:center;
+              padding:120px 5% 80px;position:relative}
+        .hero::after{content:'';position:absolute;bottom:-10px;left:0;width:100%;height:100px;background:var(--light);
+                     clip-path:polygon(0 0,100% 0,100% 20%,0 100%)}
         .hero-content{max-width:800px;margin:0 auto;text-align:center}
         .hero h1{font-size:3rem;margin-bottom:1.2rem;line-height:1.2}
         .hero p{font-size:1.25rem;opacity:.95;margin-bottom:2rem}
+
         /* Sections */
         .section{padding:6rem 5%}
         .section-title{text-align:center;margin-bottom:4rem}
-        .section-title h2{font-size:2.3rem;margin-bottom:1rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .section-title h2{font-size:2.3rem;margin-bottom:1rem;background:var(--gradient);
+                          -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
         .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+
         /* Cards */
-        .card{background:#fff;padding:2.5rem 2rem;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.05);transition:.3s;text-align:center;border:1px solid rgba(0,0,0,.05)}
+        .card{background:#fff;padding:2.5rem 2rem;border-radius:20px;
+              box-shadow:0 10px 30px rgba(0,0,0,.05);transition:.3s;text-align:center;border:1px solid rgba(0,0,0,.05)}
         .card:hover{transform:translateY(-10px);box-shadow:0 15px 40px rgba(37,99,235,.1)}
-        .card i{font-size:2.8rem;margin-bottom:1.2rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .card i{font-size:2.8rem;margin-bottom:1.2rem;background:var(--gradient);
+                -webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .card h3{font-size:1.4rem;margin-bottom:.8rem}
+
         /* Video */
-        .video-wrapper{max-width:800px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.1)}
+        .video-wrapper{max-width:800px;margin:0 auto;border-radius:20px;overflow:hidden;
+                       box-shadow:0 15px 40px rgba(0,0,0,.1)}
         iframe{width:100%;height:450px;border:none}
+
         /* Footer */
         .footer{background:var(--dark);color:#fff;padding:4rem 5%;margin-top:6rem}
-        .footer-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem}
+        .footer-content{max-width:1200px;margin:0 auto;
+                        display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem}
         .footer-section h4{margin-bottom:1.3rem;font-size:1.2rem}
         .footer-links a{color:rgba(255,255,255,.8);text-decoration:none;display:block;margin-bottom:.8rem;transition:.3s}
         .footer-links a:hover{color:#fff;transform:translateX(5px)}
+
         /* Animations */
         .fade{opacity:0;transform:translateY(40px);transition:.6s}
         .show{opacity:1;transform:translateY(0)}
+
         /* Responsive */
         @media(max-width:768px){
             .hero h1{font-size:2.3rem}
@@ -61,42 +85,42 @@
     <!-- Header -->
     <header class="header">
         <div class="logo">Astana IT AI</div>
-        <a href="#contact" class="cta-button">Начать сейчас<br><small>Start Now</small></a>
+        <a href="#contact" class="cta-button">Start Now</a>
     </header>
 
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Инновационный AI-Менеджер для абитуриентов<br><span style="font-size:.6em">Innovative AI Manager for Applicants</span></h1>
-            <p>Автоматизация подачи документов и персонализированное сопровождение с искусственным интеллектом<br><span style="font-size:.8em">Automated Application Submission and Personalized Guidance with Artificial Intelligence</span></p>
+            <h1>Innovative AI Manager for Applicants</h1>
+            <p>Automated Application Submission and Personalized Guidance with Artificial Intelligence</p>
         </div>
     </section>
 
     <!-- Features -->
     <section class="section" id="features">
         <div class="section-title">
-            <h2>Возможности AI-Менеджера<br><span style="font-size:.6em">AI Manager Features</span></h2>
+            <h2>AI Manager Features</h2>
         </div>
         <div class="grid">
             <div class="card fade">
                 <i class="fas fa-robot"></i>
-                <h3>Умный подбор программ<br><span style="font-size:.7em;font-weight:400">Smart Program Matching</span></h3>
-                <p>Персонализированные рекомендации на основе вашего профиля<br><span style="font-size:.85em">Personalized recommendations based on your profile</span></p>
+                <h3>Smart Program Matching</h3>
+                <p>Personalized recommendations based on your profile</p>
             </div>
             <div class="card fade">
                 <i class="fas fa-file-contract"></i>
-                <h3>Автозаполнение документов<br><span style="font-size:.7em;font-weight:400">Auto-Fill Documents</span></h3>
-                <p>Автоматическое заполнение форм и проверка данных<br><span style="font-size:.85em">Automatic form completion and data verification</span></p>
+                <h3>Auto-Fill Documents</h3>
+                <p>Automatic form completion and data verification</p>
             </div>
             <div class="card fade">
                 <i class="fas fa-comments"></i>
-                <h3>24/7 Поддержка<br><span style="font-size:.7em;font-weight:400">24/7 Support</span></h3>
-                <p>Чат-бот с искусственным интеллектом для ответов на вопросы<br><span style="font-size:.85em">AI-powered chatbot for answering questions</span></p>
+                <h3>24/7 Support</h3>
+                <p>AI-powered chatbot for answering questions</p>
             </div>
             <div class="card fade">
                 <i class="fas fa-chart-line"></i>
-                <h3>Трекинг заявки<br><span style="font-size:.7em;font-weight:400">Application Tracking</span></h3>
-                <p>Реальное время отслеживания статуса поступления<br><span style="font-size:.85em">Real-time monitoring of application status</span></p>
+                <h3>Application Tracking</h3>
+                <p>Real-time monitoring of application status</p>
             </div>
         </div>
     </section>
@@ -104,7 +128,7 @@
     <!-- Video -->
     <section class="section">
         <div class="section-title">
-            <h2>Видеопрезентация<br><span style="font-size:.6em">Video Presentation</span></h2>
+            <h2>Video Presentation</h2>
         </div>
         <div class="video-wrapper fade">
             <iframe src="https://www.youtube.com/embed/MGTvo36bWBM?si=sxJnhbZbsrHlrfSa" allowfullscreen></iframe>
@@ -116,17 +140,17 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Astana IT</h4>
-                <p>Инновации в образовании<br><span style="font-size:.85em">Innovations in Education</span></p>
+                <p>Innovations in Education</p>
             </div>
             <div class="footer-section">
-                <h4>Контакты<br><span style="font-weight:400">Contacts</span></h4>
+                <h4>Contacts</h4>
                 <div class="footer-links">
                     <a href="tel:+77777777777">+7 (777) 777-77-77</a>
                     <a href="mailto:info@astanait.com">info@astanait.com</a>
                 </div>
             </div>
             <div class="footer-section">
-                <h4>Соцсети<br><span style="font-weight:400">Social Media</span></h4>
+                <h4>Social Media</h4>
                 <div class="footer-links">
                     <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
                     <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
@@ -138,13 +162,14 @@
 
     <!-- JS -->
     <script>
-        // Intersection Observer для анимации появления
-        const io = new IntersectionObserver((entries)=>entries.forEach(entry=>{
-            if(entry.isIntersecting){
-                entry.target.classList.add('show');
-                io.unobserve(entry.target);
-            }
-        }),{threshold:.2});
+        // Fade-in on scroll
+        const io = new IntersectionObserver((entries)=>
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('show');
+                    io.unobserve(entry.target);
+                }
+            }),{threshold:.2});
         document.querySelectorAll('.fade').forEach(el=>io.observe(el));
     </script>
 </body>
