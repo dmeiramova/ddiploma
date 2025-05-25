@@ -4,348 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-Менеджер | Astana IT</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --accent: #f59e0b;
-            --gradient: linear-gradient(135deg, var(--primary), #3b82f6);
+        :root{
+            --primary:#2563eb;
+            --primary-hover:#1d4ed8;
+            --dark:#1e293b;
+            --light:#f8fafc;
+            --gradient:linear-gradient(135deg,var(--primary),#3b82f6)
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        /* Хедер */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: 0.3s;
-        }
-
-        .cta-button {
-            background: var(--gradient);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
-        }
-
-        /* Герой секция */
-        .hero {
-            min-height: 100vh;
-            background: var(--gradient);
-            color: white;
-            display: flex;
-            align-items: center;
-            padding: 120px 5% 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: var(--light);
-            clip-path: polygon(0 0, 100% 0, 100% 20%, 0 100%);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            opacity: 0.95;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s 0.2s ease backwards;
-        }
-
-        /* Секции */
-        .section {
-            padding: 6rem 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Карточки */
-        .card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-align: center;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.1);
-        }
-
-        .card i {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Видео */
-        .video-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        iframe {
-            width: 100%;
-            height: 450px;
-            border: none;
-        }
-
-        /* Футер */
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 4rem 5%;
-            margin-top: 6rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 1.5rem;
-            font-size: 1.25rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.8rem;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-
-        /* Анимации */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Мобильная адаптация */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .section {
-                padding: 4rem 5%;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            iframe {
-                height: 250px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                padding: 1rem;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .cta-button {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .card {
-                padding: 2rem 1.5rem;
-            }
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;scroll-behavior:smooth}
+        body{background:var(--light);color:var(--dark);line-height:1.6}
+        /* Header */
+        .header{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,.05);position:fixed;width:100%;top:0;z-index:1000;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.8rem;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .cta-button{background:var(--gradient);color:#fff;padding:.8rem 2rem;border-radius:50px;text-decoration:none;font-weight:600;transition:.3s;box-shadow:0 4px 15px rgba(37,99,235,.2)}
+        .cta-button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.3)}
+        /* Hero */
+        .hero{min-height:100vh;background:var(--gradient);color:#fff;display:flex;align-items:center;padding:120px 5% 80px;position:relative}
+        .hero::after{content:'';position:absolute;bottom:-10px;left:0;width:100%;height:100px;background:var(--light);clip-path:polygon(0 0,100% 0,100% 20%,0 100%)}
+        .hero-content{max-width:800px;margin:0 auto;text-align:center}
+        .hero h1{font-size:3rem;margin-bottom:1.2rem;line-height:1.2}
+        .hero p{font-size:1.25rem;opacity:.95;margin-bottom:2rem}
+        /* Sections */
+        .section{padding:6rem 5%}
+        .section-title{text-align:center;margin-bottom:4rem}
+        .section-title h2{font-size:2.3rem;margin-bottom:1rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+        /* Cards */
+        .card{background:#fff;padding:2.5rem 2rem;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.05);transition:.3s;text-align:center;border:1px solid rgba(0,0,0,.05)}
+        .card:hover{transform:translateY(-10px);box-shadow:0 15px 40px rgba(37,99,235,.1)}
+        .card i{font-size:2.8rem;margin-bottom:1.2rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .card h3{font-size:1.4rem;margin-bottom:.8rem}
+        /* Video */
+        .video-wrapper{max-width:800px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.1)}
+        iframe{width:100%;height:450px;border:none}
+        /* Footer */
+        .footer{background:var(--dark);color:#fff;padding:4rem 5%;margin-top:6rem}
+        .footer-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem}
+        .footer-section h4{margin-bottom:1.3rem;font-size:1.2rem}
+        .footer-links a{color:rgba(255,255,255,.8);text-decoration:none;display:block;margin-bottom:.8rem;transition:.3s}
+        .footer-links a:hover{color:#fff;transform:translateX(5px)}
+        /* Animations */
+        .fade{opacity:0;transform:translateY(40px);transition:.6s}
+        .show{opacity:1;transform:translateY(0)}
+        /* Responsive */
+        @media(max-width:768px){
+            .hero h1{font-size:2.3rem}
+            .hero p{font-size:1.1rem}
+            iframe{height:260px}
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="logo">Astana IT AI</div>
-        <a href="https://official-website.com" class="cta-button">Начать сейчас</a>
+        <a href="#contact" class="cta-button">Начать сейчас<br><small>Start Now</small></a>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Инновационный AI-Менеджер для абитуриентов</h1>
-            <p>Автоматизация подачи документов и персонализированное сопровождение с искусственным интеллектом</p>
+            <h1>Инновационный AI-Менеджер для абитуриентов<br><span style="font-size:.6em">Innovative AI Manager for Applicants</span></h1>
+            <p>Автоматизация подачи документов и персонализированное сопровождение с искусственным интеллектом<br><span style="font-size:.8em">Automated Application Submission and Personalized Guidance with Artificial Intelligence</span></p>
         </div>
     </section>
 
-    <section class="section">
+    <!-- Features -->
+    <section class="section" id="features">
         <div class="section-title">
-            <h2>Возможности AI-Менеджера</h2>
+            <h2>Возможности AI-Менеджера<br><span style="font-size:.6em">AI Manager Features</span></h2>
         </div>
         <div class="grid">
-            <div class="card">
+            <div class="card fade">
                 <i class="fas fa-robot"></i>
-                <h3>Умный подбор программ</h3>
-                <p>Персонализированные рекомендации на основе вашего профиля</p>
+                <h3>Умный подбор программ<br><span style="font-size:.7em;font-weight:400">Smart Program Matching</span></h3>
+                <p>Персонализированные рекомендации на основе вашего профиля<br><span style="font-size:.85em">Personalized recommendations based on your profile</span></p>
             </div>
-            <div class="card">
+            <div class="card fade">
                 <i class="fas fa-file-contract"></i>
-                <h3>Автозаполнение документов</h3>
-                <p>Автоматическое заполнение форм и проверка данных</p>
+                <h3>Автозаполнение документов<br><span style="font-size:.7em;font-weight:400">Auto-Fill Documents</span></h3>
+                <p>Автоматическое заполнение форм и проверка данных<br><span style="font-size:.85em">Automatic form completion and data verification</span></p>
             </div>
-            <div class="card">
+            <div class="card fade">
                 <i class="fas fa-comments"></i>
-                <h3>24/7 Поддержка</h3>
-                <p>Чат-бот с искусственным интеллектом для ответов на вопросы</p>
+                <h3>24/7 Поддержка<br><span style="font-size:.7em;font-weight:400">24/7 Support</span></h3>
+                <p>Чат-бот с искусственным интеллектом для ответов на вопросы<br><span style="font-size:.85em">AI-powered chatbot for answering questions</span></p>
             </div>
-            <div class="card">
+            <div class="card fade">
                 <i class="fas fa-chart-line"></i>
-                <h3>Трекинг заявки</h3>
-                <p>Реальное время отслеживания статуса поступления</p>
+                <h3>Трекинг заявки<br><span style="font-size:.7em;font-weight:400">Application Tracking</span></h3>
+                <p>Реальное время отслеживания статуса поступления<br><span style="font-size:.85em">Real-time monitoring of application status</span></p>
             </div>
         </div>
     </section>
 
+    <!-- Video -->
     <section class="section">
         <div class="section-title">
-            <h2>Видеопрезентация</h2>
+            <h2>Видеопрезентация<br><span style="font-size:.6em">Video Presentation</span></h2>
         </div>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        <div class="video-wrapper fade">
+            <iframe src="https://www.youtube.com/embed/MGTvo36bWBM?si=sxJnhbZbsrHlrfSa" allowfullscreen></iframe>
         </div>
     </section>
 
-    <footer class="footer">
+    <!-- Footer -->
+    <footer class="footer" id="contact">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Astana IT</h4>
-                <p>Инновации в образовании</p>
+                <p>Инновации в образовании<br><span style="font-size:.85em">Innovations in Education</span></p>
             </div>
             <div class="footer-section">
-                <h4>Контакты</h4>
+                <h4>Контакты<br><span style="font-weight:400">Contacts</span></h4>
                 <div class="footer-links">
                     <a href="tel:+77777777777">+7 (777) 777-77-77</a>
                     <a href="mailto:info@astanait.com">info@astanait.com</a>
                 </div>
             </div>
             <div class="footer-section">
-                <h4>Соцсети</h4>
+                <h4>Соцсети<br><span style="font-weight:400">Social Media</span></h4>
                 <div class="footer-links">
                     <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
                     <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
@@ -355,24 +136,16 @@
         </div>
     </footer>
 
+    <!-- JS -->
     <script>
-        // Плавное появление элементов при скролле
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        document.querySelectorAll('.card, .video-wrapper').forEach((el) => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease-out';
-            observer.observe(el);
-        });
+        // Intersection Observer для анимации появления
+        const io = new IntersectionObserver((entries)=>entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add('show');
+                io.unobserve(entry.target);
+            }
+        }),{threshold:.2});
+        document.querySelectorAll('.fade').forEach(el=>io.observe(el));
     </script>
-    <script src="chat-widget.js"></script>
 </body>
 </html>
